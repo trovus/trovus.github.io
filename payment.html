@@ -1,10 +1,32 @@
-<form action="" method="POST">
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="pk_test_bhBVTxEjUi2wYm6MoHWp0WVT"
-    data-amount="2000"
-    data-name="Demo Site"
-    data-description="2 widgets ($20.00)"
-    data-image="/128x128.png">
-  </script>
-</form>
+<script src="https://checkout.stripe.com/checkout.js"></script>
+<select id="paymentOptions">
+  <option>One person</option>
+  <option>Two people</option>
+</select>
+<button id="paymentButton">Purchase</button>
+
+<script>
+  var handler = StripeCheckout.configure({
+    key: 'pk_test_bhBVTxEjUi2wYm6MoHWp0WVT',
+    image: '/square-image.png',
+    token: function(token, args) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+    }
+  });
+
+  document.getElementById('paymentButton').addEventListener('click', function(e) {
+    
+    var e = document.getElementById("paymentOptions");
+    var selectedOption = e.options[e.selectedIndex].value;
+    console.log(selectedOption);
+    return;
+    // Open Checkout with further options
+    handler.open({
+      name: 'Demo Site',
+      description: '2 widgets ($20.00)',
+      amount: 2000
+    });
+    e.preventDefault();
+  });
+</script>
