@@ -22,7 +22,9 @@
     handler.open({
       name: 'HR Analytics Workshop',
       description: select.options[select.selectedIndex].text,
-      amount: select.options[select.selectedIndex].value
+      amount: select.options[select.selectedIndex].value,
+      currency: 'GBP',
+      panelLabel: 'Pay {{amount}}'
     });
     e.preventDefault();
   });
