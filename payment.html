@@ -8,12 +8,7 @@
 <script>
   var handler = StripeCheckout.configure({
     key: 'pk_test_bhBVTxEjUi2wYm6MoHWp0WVT',
-    image: '/square-image.png',
-    token: function(token, args) {
-      // Use the token to create the charge with a server-side script.
-      // You can access the token ID with `token.id`
-      console.log(args);
-    }
+    // image: '/square-image.png'
   });
 
   document.getElementById('paymentButton').addEventListener('click', function(e) {
